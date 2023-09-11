@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:menusection/Myprofilepage.dart';
 import 'package:menusection/customwidget/menulistcarditem.dart';
 
 import 'usermodel.dart';
@@ -13,14 +14,23 @@ class MenulistItem extends StatefulWidget {
 class _MenulistItemState extends State<MenulistItem> {
   @override
   Widget build(BuildContext context) {
-     return Container(
-      height: 300,
-       child: ListView.builder(
+    return Expanded(
+      child: ListView.builder(
         itemBuilder: (context, index) {
-          return MenuListCardItem(user: users[index]);
+          return MenuListCardItem(
+            user: users[index],
+            onTap: () {
+              // print('Item $index tapped');
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyprofilePage()),
+              );
+            },
+            Function: () {},
+          );
         },
         itemCount: users.length,
-         ),
-     );
+      ),
+    );
   }
 }

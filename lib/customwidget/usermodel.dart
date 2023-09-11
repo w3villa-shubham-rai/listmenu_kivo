@@ -7,4 +7,9 @@ class User {
 List<User> users = [
   User('My Profile', 'asset/images/user.svg'),
   User('My Profile', 'asset/images/user.svg'),
+  User('My Profile', 'asset/images/user.svg'),
+  User('My Profile', 'asset/images/user.svg'),
+  User('My Profile', 'asset/images/user.svg'),
+  User('My Profile', 'asset/images/user.svg'),
+  User('My Profile', 'asset/images/user.svg'),
 ];

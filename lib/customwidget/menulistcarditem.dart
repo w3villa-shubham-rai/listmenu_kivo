@@ -4,13 +4,14 @@ import 'package:menusection/customwidget/usermodel.dart';
 
 class MenuListCardItem extends StatelessWidget {
   final User user;
+  final VoidCallback? onTap;
 
-  const MenuListCardItem({required this.user, Key? key}) : super(key: key);
+  const MenuListCardItem({required this.user, this.onTap, Key? key, required Null Function() }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 16),
+    return GestureDetector(
+      onTap: onTap,
       child: Container(
         height: 70,
         decoration: const BoxDecoration(
@@ -29,8 +30,8 @@ class MenuListCardItem extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: SvgPicture.asset(
                   user.image, 
-                  width: 32,
-                  height: 32,
+                  width: 20,
+                  height: 20,
                 ),
               ),
             ),
@@ -40,7 +41,7 @@ class MenuListCardItem extends StatelessWidget {
                 user.usermenuname,
                 style: const TextStyle(
                   color: Color(0xFF000000),
-                  fontSize: 18,
+                  fontSize: 17,
                 ),
               ),
             ),
