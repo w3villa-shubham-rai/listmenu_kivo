@@ -20,9 +20,7 @@ class UserProfile extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Expanded(
-              flex: 3,
-              child: Container(
+              Container(
                 // color: Colors.red,
                 child:ClipRRect(
                 borderRadius: BorderRadius.circular(55.0), // Adjust the radius as needed
@@ -34,7 +32,6 @@ class UserProfile extends StatelessWidget {
                 ),
               )
               ),
-            ),
     
             Padding(
               padding: const EdgeInsets.only(top: 72,left: 14),

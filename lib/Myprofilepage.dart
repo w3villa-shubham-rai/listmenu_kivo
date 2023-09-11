@@ -58,10 +58,13 @@ class _MyprofilePageState extends State<MyprofilePage> {
                       )),
                   Expanded(
                       flex: 1,
-                      child: SvgPicture.asset(
-                        'asset/images/upperdropdown.svg',
-                        width: 10,
-                        height: 10,
+                      child: InkWell(
+                        
+                        child: SvgPicture.asset(
+                          'asset/images/upperdropdown.svg',
+                          width: 10,
+                          height: 10,
+                        ),
                       )),
                 ],
               ),

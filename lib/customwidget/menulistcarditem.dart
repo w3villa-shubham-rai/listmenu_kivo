@@ -25,7 +25,7 @@ class MenuListCardItem extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              flex: 2,
+              flex: 1,
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: SvgPicture.asset(
@@ -36,7 +36,7 @@ class MenuListCardItem extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 8,
+              flex: 6,
               child: Text(
                 user.usermenuname,
                 style: const TextStyle(
