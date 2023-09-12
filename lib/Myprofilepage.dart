@@ -9,73 +9,61 @@ class MyprofilePage extends StatefulWidget {
 }
 
 class _MyprofilePageState extends State<MyprofilePage> {
-  List<String> lavel = ['Full Name','DOB','Gender','Mobile','Email','System SSH','Github Account',];
-  List<String> value = ['Amit Kumar','16/04/1990','Male','+91 98-99-012-345','Amit.kumar@w3villa.com ','Null','Null',];
-  List<String> officialtiltle = ['Full Name','DOB','Gender','Mobile','Email','System SSH','Github Account',];
-  List<String> officialvalue = ['Amit Kumar','16/04/1990','Male','+91 98-99-012-345','Amit.kumar@w3villa.com ','Null','Null',];
-  bool isExpanded = false; 
-
+  List<String> lavel = [
+    'Full Name',
+    'DOB',
+    'Gender',
+    'Mobile',
+    'Email',
+    'System SSH',
+    'Github Account',
+  ];
+  List<String> value = [
+    'Amit Kumar',
+    '16/04/1990',
+    'Male',
+    '+91 98-99-012-345',
+    'Amit.kumar@w3villa.com ',
+    'Null',
+    'Null',
+  ];
+  List<String> officialtiltle = [
+    'Employee Code',
+    'Designation',
+    'Blood Group ',
+    'Policy Number',
+    'Date of Joining',
+    'Date of Relieving',
+    'Bank Name',
+    'Bank Account No. ',
+    'Location',
+    'Pan Number'
+  ];
+  List<String> officialvalue = [
+    'WT/GD/072022/101',
+    'Project Manager',
+    'A+',
+    '9889-1234-5678',
+    '01/01/2022',
+    'Null',
+    'ICICI Bank',
+    '787981234',
+    'Noida',
+    'AYBNK6117K'
+  ];
+  
+  bool showPersonalInforamtion = true;
+  bool showOfficalInforamtion = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
           UserProfile(),
-            ExpansionTile(
-            initiallyExpanded: isExpanded,
-            onExpansionChanged: (expanded) {
-              setState(() {
-                isExpanded = expanded; // Update the expansion state
-              });
-            },
-            title: SizedBox(
-              height: 50,
-              child: Card(
-                color: Color(0xFFFFFFFF),
-                elevation: 1,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(3.0),
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: SvgPicture.asset(
-                        'asset/images/user.svg',
-                        width: 20,
-                        height: 20,
-                      ),
-                    ),
-                    const Expanded(
-                      flex: 8,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 10),
-                        child: Text('Personal Information'),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: InkWell(
-                        child: SvgPicture.asset(
-                          'asset/images/upperdropdown.svg',
-                          width: 10,
-                          height: 10,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            children: [
-              Personalinformation_TextField(),
-            ],
-                    ),
-          
-          // Personalinformation_TextField(),
-          // OffcialinformationHeader(),
-          // officialinformation_TextField(),
-
+          Presonalinformation(),
+          Personalinformation_TextField(),
+          OffcialinformationHeader(),
+          officialinformation_TextField(),
         ],
       ),
     );
@@ -132,41 +120,51 @@ class _MyprofilePageState extends State<MyprofilePage> {
 // END
 
   Widget Personalinformation_TextField() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 15),
+    return Visibility(
+      visible: showPersonalInforamtion,
       child: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20),
-        child: Container(
-          decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 255, 253, 253),
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromARGB(255, 226, 225, 225),
-                  blurRadius: 2.0,
-                )
-              ]),
+        padding: const EdgeInsets.only(top: 15),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20),
           child: Container(
-            child: Column(
-              children: [
-                Padding(
+            decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 255, 253, 253),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color.fromARGB(255, 226, 225, 225),
+                    blurRadius: 2.0,
+                  )
+                ]),
+            child: Container(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(top: 15),
+                    child: Column(
+                      children: [
+                          Padding(
                   padding: EdgeInsets.only(top: 15),
                   child: Column(
                     children: [
-                         ListView.builder(
-                         shrinkWrap: true,
-                         itemCount: lavel.length,
-                         itemBuilder: (context, index) {
-                         return TextPartCoustomwidget(
-                         label: lavel[index],
-                         value: value[index],
-                      );
-                    },
-                  ),
+                      ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: lavel.length,
+                        itemBuilder: (context, index) {
+                          return TextPartCoustomwidget(
+                            label: lavel[index],
+                            value: value[index],
+                          );
+                        },
+                      ),
                       Edit_Save_Btn(),
                     ],
                   ),
                 )
-              ],
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -240,65 +238,66 @@ class _MyprofilePageState extends State<MyprofilePage> {
 
 //  Official information section  Start here
 
-//   Widget OffcialinformationHeader() {
-//     return Padding(
-//       padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-//       child: Column(
-//         children: [
-//           SizedBox(
-//             height: 50,
-//             child: Card(
-//               color: Color(0xFFFFFFFF),
-//               elevation: 1,
-//               shape: RoundedRectangleBorder(
-//                 borderRadius: BorderRadius.circular(3.0),
-//               ),
-//               child: Row(
-//                 children: [
-//                   Expanded(
-//                       flex: 1,
-//                       child: SvgPicture.asset(
-//                         'asset/images/briefcase.svg',
-//                         width: 20,
-//                         height: 20,
-//                       )),
-//                   const Expanded(
-//                       flex: 8,
-//                       child: Padding(
-//                         padding: EdgeInsets.only(left: 10),
-//                         child: Text('Official Information'),
-//                       )),
-//                   Expanded(
-//                       flex: 1,
-//                       child: InkWell(
-//                         onTap: () {
-//                           setState(() {
-//                             if (showOfficalInforamtion) {
-//                               showOfficalInforamtion = false;
-//                               showPersonalInforamtion = true;
-//                             } else {}
-//                             showPersonalInforamtion = false;
-//                             showOfficalInforamtion = true;
-//                           });
-//                         },
-//                         child: SvgPicture.asset(
-//                           'asset/images/downdrop.svg',
-//                           width: 10,
-//                           height: 10,
-//                         ),
-//                       )),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
+  Widget OffcialinformationHeader() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 50,
+            child: Card(
+              color: Color(0xFFFFFFFF),
+              elevation: 1,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(3.0),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                      flex: 1,
+                      child: SvgPicture.asset(
+                        'asset/images/briefcase.svg',
+                        width: 20,
+                        height: 20,
+                      )),
+                  const Expanded(
+                      flex: 8,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 10),
+                        child: Text('Official Information'),
+                      )),
+                  Expanded(
+                      flex: 1,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {
+                            if (showOfficalInforamtion) {
+                              showOfficalInforamtion = false;
+                              showPersonalInforamtion = true;
+                            } else {}
+                            showPersonalInforamtion = false;
+                            showOfficalInforamtion = true;
+                          });
+                        },
+                        child: SvgPicture.asset(
+                          'asset/images/downdrop.svg',
+                          width: 10,
+                          height: 10,
+                        ),
+                      )),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
 // pass the coustom text
   Widget officialinformation_TextField() {
     return Visibility(
+      visible: showOfficalInforamtion,
       child: Padding(
         padding: const EdgeInsets.only(top: 15),
         child: Padding(
@@ -319,17 +318,16 @@ class _MyprofilePageState extends State<MyprofilePage> {
                     padding: EdgeInsets.only(top: 15),
                     child: Column(
                       children: [
-                        ListView.builder(
-                         shrinkWrap: true,
-                         itemCount: lavel.length,
-                         itemBuilder: (context, index) {
-                         return TextPartOfficial_Info(
-                         label: lavel[index],
-                         value: value[index],
-                      );
-                    },
-                  ),
-                       
+                       ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: officialvalue.length,
+                        itemBuilder: (context, index) {
+                          return TextPartOfficial_Info(
+                            label: officialtiltle[index],
+                            value: officialvalue[index],
+                          );
+                        },
+                      ),
                       ],
                     ),
                   )
@@ -364,8 +362,8 @@ class _MyprofilePageState extends State<MyprofilePage> {
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 20),
+          Padding(
+            padding: const EdgeInsets.only(left: 20),
             child: Text(":"),
           ),
           Expanded(
