@@ -51,9 +51,22 @@ class _MyprofilePageState extends State<MyprofilePage> {
     'Noida',
     'AYBNK6117K'
   ];
-  
-  bool showPersonalInforamtion = true;
-  bool showOfficalInforamtion = false;
+
+  bool showPersonalInformation = true;
+  bool showOfficialInformation = false;
+  void _togglePersonalInformation() {
+    setState(() {
+      showPersonalInformation = true;
+      showOfficialInformation = false;
+    });
+  }
+
+  void _toggleOfficialInformation() {
+    setState(() {
+      showPersonalInformation = false;
+      showOfficialInformation = true;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,7 +115,7 @@ class _MyprofilePageState extends State<MyprofilePage> {
                   Expanded(
                       flex: 1,
                       child: InkWell(
-                        
+                        onTap: _togglePersonalInformation,
                         child: SvgPicture.asset(
                           'asset/images/upperdropdown.svg',
                           width: 10,
@@ -121,7 +134,7 @@ class _MyprofilePageState extends State<MyprofilePage> {
 
   Widget Personalinformation_TextField() {
     return Visibility(
-      visible: showPersonalInforamtion,
+      visible: showPersonalInformation,
       child: Padding(
         padding: const EdgeInsets.only(top: 15),
         child: Padding(
@@ -142,24 +155,24 @@ class _MyprofilePageState extends State<MyprofilePage> {
                     padding: EdgeInsets.only(top: 15),
                     child: Column(
                       children: [
-                          Padding(
-                  padding: EdgeInsets.only(top: 15),
-                  child: Column(
-                    children: [
-                      ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: lavel.length,
-                        itemBuilder: (context, index) {
-                          return TextPartCoustomwidget(
-                            label: lavel[index],
-                            value: value[index],
-                          );
-                        },
-                      ),
-                      Edit_Save_Btn(),
-                    ],
-                  ),
-                )
+                        Padding(
+                          padding: EdgeInsets.only(top: 15),
+                          child: Column(
+                            children: [
+                              ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: lavel.length,
+                                itemBuilder: (context, index) {
+                                  return TextPartCoustomwidget(
+                                    label: lavel[index],
+                                    value: value[index],
+                                  );
+                                },
+                              ),
+                              Edit_Save_Btn(),
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   )
@@ -269,16 +282,7 @@ class _MyprofilePageState extends State<MyprofilePage> {
                   Expanded(
                       flex: 1,
                       child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            if (showOfficalInforamtion) {
-                              showOfficalInforamtion = false;
-                              showPersonalInforamtion = true;
-                            } else {}
-                            showPersonalInforamtion = false;
-                            showOfficalInforamtion = true;
-                          });
-                        },
+                        onTap: _toggleOfficialInformation,
                         child: SvgPicture.asset(
                           'asset/images/downdrop.svg',
                           width: 10,
@@ -297,7 +301,7 @@ class _MyprofilePageState extends State<MyprofilePage> {
 // pass the coustom text
   Widget officialinformation_TextField() {
     return Visibility(
-      visible: showOfficalInforamtion,
+      visible: showOfficialInformation,
       child: Padding(
         padding: const EdgeInsets.only(top: 15),
         child: Padding(
@@ -318,16 +322,16 @@ class _MyprofilePageState extends State<MyprofilePage> {
                     padding: EdgeInsets.only(top: 15),
                     child: Column(
                       children: [
-                       ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: officialvalue.length,
-                        itemBuilder: (context, index) {
-                          return TextPartOfficial_Info(
-                            label: officialtiltle[index],
-                            value: officialvalue[index],
-                          );
-                        },
-                      ),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: officialvalue.length,
+                          itemBuilder: (context, index) {
+                            return TextPartOfficial_Info(
+                              label: officialtiltle[index],
+                              value: officialvalue[index],
+                            );
+                          },
+                        ),
                       ],
                     ),
                   )
@@ -342,9 +346,7 @@ class _MyprofilePageState extends State<MyprofilePage> {
 
 //  end
 
-
-
- Widget TextPartOfficial_Info({
+  Widget TextPartOfficial_Info({
     required String label,
     required String value,
   }) {
@@ -379,5 +381,4 @@ class _MyprofilePageState extends State<MyprofilePage> {
       ),
     );
   }
-  
 }
