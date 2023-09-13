@@ -6,7 +6,9 @@ class MenuListCardItem extends StatelessWidget {
   final User user;
   final VoidCallback? onTap;
 
-  const MenuListCardItem({required this.user, this.onTap, Key? key, required Null Function() }) : super(key: key);
+  const MenuListCardItem(
+      {required this.user, this.onTap, Key? key, required Null Function()})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class MenuListCardItem extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: SvgPicture.asset(
-                  user.image, 
+                  user.image,
                   width: 20,
                   height: 20,
                 ),

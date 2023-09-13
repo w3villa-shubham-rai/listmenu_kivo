@@ -67,6 +67,7 @@ class _MyprofilePageState extends State<MyprofilePage> {
       showOfficialInformation = true;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

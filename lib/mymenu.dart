@@ -12,19 +12,17 @@ class _MymenuState extends State<Mymenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:SafeArea(
+      body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(left: 35,right: 35),
+          padding: const EdgeInsets.only(left: 35, right: 35),
           child: Container(
             child: const Column(
               children: [
                 UserProfile(),
                 MenulistItem(),
                 // MenuListCardItem(),
-                
               ],
             ),
-              
           ),
         ),
       ),

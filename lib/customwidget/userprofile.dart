@@ -8,103 +8,89 @@ class UserProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-       decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            width: 2,
-            color: Color.fromARGB(255, 243, 243, 243),
-          )
-        )
-      ),
-      child: Row(   
+      decoration: const BoxDecoration(
+          border: Border(
+              bottom: BorderSide(
+        width: 2,
+        color: Color.fromARGB(255, 243, 243, 243),
+      ))),
+      child: Row(
         children: [
           Stack(
             children: [
-              Container(
-                // color: Colors.red,
-                child:ClipRRect(
-                borderRadius: BorderRadius.circular(55.0), // Adjust the radius as needed
-                child: Image.network(
-                  'https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg',
-                  height: 96.0,
-                  width: 100.0,
-                  fit: BoxFit.cover, // Cover-fit the image within the rounded rectangle
-                ),
-              )
+              const CircleAvatar(
+                radius: 45,
+                backgroundImage: NetworkImage(
+                    'https://img.freepik.com/premium-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg'),
               ),
-    
-            Padding(
-              padding: const EdgeInsets.only(top: 72,left: 14),
-              child: Positioned(
-               child: Stack(
-                 alignment: Alignment.center,
-                 children: [
-                   Container(
-                     height: 30,
-                     width: 30,
-                     decoration: BoxDecoration(
-                       color: Color(0xFFE6AD2E),
-                       borderRadius: BorderRadius.circular(15),
-                     ),
-                   ),
-                   SvgPicture.asset('asset/images/camera.svg'),
-                 ],
-               ),
-              ),
-            )
-    
-    
+              Positioned(
+                  bottom: 1,
+                  left: 12,
+                  child: CircleAvatar(
+                    radius: 15,
+                    backgroundColor: const Color(0xFFE6AD2E),
+                    child: InkWell(
+                      onTap: () {},
+                      child: const Icon(
+                        Icons.camera,
+                        color: Colors.white,
+                        size: 20,
+                      ),
+                    ),
+                  ))
             ],
-            
-          
           ),
-       Expanded(
-                flex: 8,
-                child: Container(
-                  child: const Padding(
-                    padding: EdgeInsets.only(left: 21),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 3.0), 
-                          child: Text(
-                            'Amit Kumar',
-                            style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold, color: Color(0xFF40518A)),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 3.0), 
-                          child: Text(
-                            'ID: WT/GD/072022/101',
-                            style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Color(0xFF8B8B8B)),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 3.0), 
-    
-                          child: Row(
-                             children: [
-                              Text(
-                              'Project Manager  |',
-                              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Color(0xFF000000)),                    
+          const Expanded(
+            flex: 8,
+            child: Padding(
+              padding: EdgeInsets.only(left: 21),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 3.0),
+                    child: Text(
+                      'Amit Kumar',
+                      style: TextStyle(
+                          fontSize: 27,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF40518A)),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 3.0),
+                    child: Text(
+                      'ID: WT/GD/072022/101',
+                      style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF8B8B8B)),
+                    ),
+                  ),
+                  Padding(
+                      padding: EdgeInsets.only(bottom: 3.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Project Manager  |',
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xFF000000)),
                           ),
                           Text(
                             '  Noida',
-                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Color(0xFF8B8B8B)),                    
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xFF8B8B8B)),
                           ),
-                             ],
-                          )
-                          
-                        ),
-                        
-                      ],
-                    ),
-                  ),
-                ),
-         )  
-    
-    
+                        ],
+                      )),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
